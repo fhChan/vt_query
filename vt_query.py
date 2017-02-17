@@ -3,8 +3,10 @@ import urllib,urllib2
 import time
 import json
 
+apikey = 'Type your own apikey here'
+
 def vt_scan(url):
-    params = {'apikey': '1c61351694700b80190bcf07f3d043be0d656591919ad4f5a81836b3ae76bb87', 'url':url}
+    params = {'apikey': apikey, 'url':url}
     req = urllib2.Request('https://www.virustotal.com/vtapi/v2/url/scan', data=urllib.urlencode(params))
     response = urllib2.urlopen(req) 
     the_page = response.read()
@@ -19,7 +21,7 @@ def vt_report(url):
     # sleep 15 to control requests/min to API. Public APIs only allow for 4/min threshold.
     time.sleep(15)
 
-    params = {'apikey': '1c61351694700b80190bcf07f3d043be0d656591919ad4f5a81836b3ae76bb87', 'resource':url}
+    params = {'apikey': apikey, 'resource':url}
     req = urllib2.Request('https://www.virustotal.com/vtapi/v2/url/report', data=urllib.urlencode(params))
     response = urllib2.urlopen(req) 
     the_page = response.read()
